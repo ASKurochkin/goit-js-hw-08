@@ -17,12 +17,15 @@ if (localFormData) {
   formEl.message.value = message;
 }
 
-formEl.addEventListener('submit', () => {
-    formEl.email.value = '';
-    formEl.message.value = '';
-    localStorage.setItem('feedback-form-state', JSON.stringify({
-        email: '',
-        message: '',
-      }));  
-      console.log(JSON.parse(localFormData))
-})
+formEl.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  formEl.email.value = '';
+  formEl.message.value = '';
+  localStorage.setItem('feedback-form-state', JSON.stringify({
+    email: '',
+    message: '',
+  }));
+
+  console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+});
