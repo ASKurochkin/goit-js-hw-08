@@ -20,12 +20,13 @@ if (localFormData) {
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  formEl.email.value = '';
-  formEl.message.value = '';
+  console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+
   localStorage.setItem('feedback-form-state', JSON.stringify({
     email: '',
     message: '',
-  }));
+  }))
 
-  console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+  formEl.email.value = '';
+  formEl.message.value = '';
 });
